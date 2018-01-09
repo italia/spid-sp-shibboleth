@@ -1,0 +1,92 @@
+<SPConfig xmlns="urn:mace:shibboleth:2.0:native:sp:config"
+    xmlns:conf="urn:mace:shibboleth:2.0:native:sp:config"
+    xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
+    xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+    xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" clockSkew="180">
+
+    <ApplicationDefaults entityID="https://<entityID>"
+        REMOTE_USER="eppn persistent-id targeted-id" signing="true"
+        signingAlg="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" encryption="false"
+        authnContextClassRef="https://www.spid.gov.it/SpidL2" authnContextComparison="exact"
+        NameIDFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">
+
+        <Sessions lifetime="1800" timeout="3600" relayState="ss:mem" handlerURL="/iam"
+            checkAddress="false" handlerSSL="true" cookieProps="https">
+
+            <!-- Login -->
+            <SessionInitiator type="SAML2" Location="/Login" isDefault="true"
+	        entityID="https://<entityID>"
+                outgoingBinding="urn:oasis:names:tc:SAML:profiles:SSO:request-init"
+                isPassive="false" 
+                signing="true">
+		<samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" 
+	            xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" ID="id..." Version="2.0" IssueInstant="2017-01-01T00:00:00Z" 
+		    AttributeConsumingServiceIndex="0" ForceAuthn="true">
+		    <saml:Issuer Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity" NameQualifier="https://url">https://url</saml:Issuer>
+		</samlp:AuthnRequest>
+	    </SessionInitiator>            
+
+            <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+                Location="/SAML2/POST" index="0"/>
+
+            <!-- Logout -->
+            <LogoutInitiator type="Chaining" Location="/Logout">
+                <LogoutInitiator type="SAML2"
+                    outgoingBindings="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+                    signing="true"/>
+                <LogoutInitiator type="Local" signing="true"/>
+            </LogoutInitiator>
+            
+            <md:SingleLogoutService Location="/SLO/POST"
+                Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"/>
+            <md:SingleLogoutService Location="/SLO/Redirect"
+                Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"/>
+            
+            <!-- Handler -->
+            <Handler type="Status" Location="/Status" acl="127.0.0.1 ::1"/>
+            <Handler type="Session" Location="/Session" showAttributeValues="true"/>
+
+        </Sessions>
+
+        <!-- Error page settings -->
+        <!-- Errors supportContact="rosini@agid.gov.it" helpLocation="about.html"
+               session="loginError.html"
+	       ssl="genericError.html"
+	       metadata="genericError.html"/ -->
+
+        <!-- SPID Test Environment IdentityServer Metadata -->
+	<MetadataProvider type="XML" validate="true" file="metadata/arubaid.xml" id="https://loginspid.aruba.it"/>
+        <MetadataProvider type="XML" validate="true" file="metadata/infocertid.xml" id="https://identity.infocert.it"/>
+        <MetadataProvider type="XML" validate="true" file="metadata/intesaid.xml" id="https://spid.intesa.it"/>
+	<MetadataProvider type="XML" validate="true" file="metadata/namirialid.xml" id="https://idp.namirialtsp.com/idp"/>
+        <MetadataProvider type="XML" validate="true" file="metadata/posteid.xml" id="https://posteid.poste.it"/>
+        <MetadataProvider type="XML" validate="true" file="metadata/sielteid.xml" id="https://identity.sieltecloud.it"/>
+        <MetadataProvider type="XML" validate="true" file="metadata/spiditalia.xml" id="https://spid.register.it"/>
+        <MetadataProvider type="XML" validate="true" file="metadata/timid.xml" id="https://login.id.tim.it/affwebservices/public/saml2sso"/>
+	
+  <!-- Utilizzo con unico metadata -->
+  <!--
+	<MetadataProvider type="XML" 
+            validate="true"
+            uri="https://auth.agid.gov.it/spid-entities-idps.xml"
+            backingFilePath="metadata/spid-entities-idps.xml"
+            reloadInterval="3600">
+        </MetadataProvider>
+	-->
+        <!-- Attributes -->
+        <AttributeExtractor type="XML" validate="true" reloadChanges="true" path="attribute-map.xml"/>
+        <AttributeResolver type="Query" subjectMatch="true"/>
+        <AttributeFilter type="XML" validate="true" path="attribute-policy.xml"/>
+
+        <!-- Assertion signing cert -->
+        <CredentialResolver type="File" key="certs/agid-sp.key" certificate="certs/agid-sp.crt" use="signing"/>
+    
+    </ApplicationDefaults>
+
+    <!-- Security policies -->
+    <SecurityPolicyProvider type="XML" validate="true" path="security-policy.xml"/>
+
+    <!-- Protocols and binding -->
+    <ProtocolProvider type="XML" validate="true" reloadChanges="true" path="protocols.xml"/>
+
+</SPConfig>
