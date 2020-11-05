@@ -47,6 +47,7 @@
                     <saml:Issuer Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity" NameQualifier="https://url">
                         https://url
                     </saml:Issuer>
+                    <samlp:NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient"/>
                 </samlp:AuthnRequest>
             </SessionInitiator>
 
