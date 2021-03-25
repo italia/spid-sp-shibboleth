@@ -9,9 +9,9 @@
     <Policy id="default" validate="false">
         <PolicyRule type="MessageFlow" checkReplay="true" expires="60"/>
         <PolicyRule type="Conditions">
+	    
             <PolicyRule type="Audience">
-		        <!-- deve coincidere con NameQualifier in Issuer nello shibboleth2.xml -->
-		        <Audience>https://url</Audience>
+		        <Audience>https://spid.sp.example.it/shibboleth</Audience>
             </PolicyRule>
             <!-- Enable Delegation rule to permit delegated access. -->
             <!-- <PolicyRule type="Delegation"/> -->

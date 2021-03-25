@@ -11,12 +11,12 @@
     -->
 
     <!-- The ApplicationDefaults element is where most of Shibboleth's SAML bits are defined. -->
-    <ApplicationDefaults entityID="https://url"
+    <ApplicationDefaults entityID="https://spid.sp.example.it/shibboleth"
         REMOTE_USER="eppn subject-id pairwise-id persistent-id"
         signing="true"
-                signingAlg="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" encryption="false"
-                authnContextClassRef="https://www.spid.gov.it/SpidL2" authnContextComparison="exact"
-                NameIDFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
+        signingAlg="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" encryption="false"
+        authnContextClassRef="https://www.spid.gov.it/SpidL2" authnContextComparison="exact"
+        NameIDFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
         cipherSuites="DEFAULT:!EXP:!LOW:!aNULL:!eNULL:!DES:!IDEA:!SEED:!RC4:!3DES:!kRSA:!SSLv2:!SSLv3:!TLSv1:!TLSv1.1">
 
         <!--
@@ -30,13 +30,21 @@
         <Sessions lifetime="28800" timeout="3600" relayState="ss:mem"
                   checkAddress="false" handlerSSL="true" cookieProps="https">
 
+
+            <!--
+            Configures SSO for a default IdP. To allow for >1 IdP, remove
+            entityID property and adjust discoveryURL to point to discovery service.
+            (Set discoveryProtocol to "WAYF" for legacy Shibboleth WAYF support.)
+            You can also override entityID on /Login query string, or in RequestMap/htaccess.
+            -->
             <!-- Login
             acsByIndex has to be true because explicit AssertionConsumerServiceURL
             are not allowed -> error 16
             for the same reason acsIndex is needed also if it is 0
             -->
+
             <SessionInitiator type="SAML2" Location="/Login" isDefault="true"
-                              entityID="https://url"
+                              entityID="http://localhost:8080"
                               outgoingBinding="urn:oasis:names:tc:SAML:profiles:SSO:request-init"
                               isPassive="false"
                               acsIndex="0"
@@ -50,9 +58,9 @@
                                     AttributeConsumingServiceIndex="0"
                                     ForceAuthn="true">
                     <!-- if NameQualifier is different from entityID, you need to update security-policy.xml -->
-                    <saml:Issuer Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity" NameQualifier="https://url">
-                        https://url
-                    </saml:Issuer>
+		    <saml:Issuer NameQualifier="https://spid.sp.example.it/shibboleth"
+                                 Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+                    >https://spid.sp.example.it/shibboleth</saml:Issuer>
                     <samlp:NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient"/>
                 </samlp:AuthnRequest>
             </SessionInitiator>
@@ -72,12 +80,11 @@
                                     Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"/>
             <md:SingleLogoutService Location="/SLO/Redirect"
                                     Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"/>
-
             <!-- Administrative logout. -->
             <LogoutInitiator type="Admin" Location="/Logout/Admin" acl="127.0.0.1 ::1" />
           
             <!-- Extension service that generates "approximate" metadata based on SP configuration. -->
-            <Handler type="MetadataGenerator" Location="/Metadata" signing="false"/>
+            <Handler type="MetadataGenerator" Location="/Metadata" signing="true"/>
 
             <!-- Status reporting service. -->
             <Handler type="Status" Location="/Status" acl="127.0.0.1 ::1"/>
@@ -94,11 +101,13 @@
         also add your own attributes with values that can be plugged into the
         templates, e.g., helpLocation below.
         -->
-        <Errors supportContact="rosini@agid.gov.it"
+        <Errors supportContact="support@example.org"
             helpLocation="/about.html"
             styleSheet="/shibboleth-sp/main.css"/>
 
         <!-- SPID Test Environment IdentityServer Metadata -->
+        <MetadataProvider type="XML" validate="true" path="metadata/spid-saml-check.xml" id="http://localhost:8080"/>
+	<!--
         <MetadataProvider type="XML" validate="true" path="metadata/arubaid.xml" id="https://loginspid.aruba.it"/>
         <MetadataProvider type="XML" validate="true" path="metadata/infocertid.xml" id="https://identity.infocert.it"/>
         <MetadataProvider type="XML" validate="true" path="metadata/intesaid.xml" id="https://spid.intesa.it"/>
@@ -108,6 +117,7 @@
         <MetadataProvider type="XML" validate="true" path="metadata/spiditalia.xml" id="https://spid.register.it"/>
         <MetadataProvider type="XML" validate="true" path="metadata/timid.xml" id="https://login.id.tim.it/affwebservices/public/saml2sso"/>
         <MetadataProvider type="XML" validate="true" path="metadata/lepidaid.xml" id="https://id.lepida.it/idp/shibboleth"/>
+	-->
 
         <!-- Map to extract attributes from SAML assertions. -->
         <AttributeExtractor type="XML" validate="true" reloadChanges="false" path="attribute-map.xml"/>
@@ -117,7 +127,7 @@
 
         <!-- Simple file-based resolvers for separate signing/encryption keys. -->
         <CredentialResolver type="File" use="signing"
-            key="sp-signing-key.pem" certificate="sp-signing-cert.pem"/>
+            key="sp-key.pem" certificate="sp-cert.pem"/>
         <!--
         <CredentialResolver type="File" use="encryption"
             key="sp-encrypt-key.pem" certificate="sp-encrypt-cert.pem"/>
