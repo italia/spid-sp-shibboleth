@@ -1,7 +1,9 @@
 # spid-sp-shibboleth
 Middleware SPID basato su Shibboleth
 
-Questo progetto contiene un setup dimostrativo composto dai seguenti componenti:
+[ Work in progress ] 
+
+Questo progetto conterrà un setup dimostrativo composto dai seguenti componenti:
 
 - Shibboleth SP
 - Progetto PHP di esempio
