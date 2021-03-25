@@ -1,8 +1,6 @@
 # spid-shibboleth-sp
 
-Istruzioni per l'autenticazione SPID con un Service Provider SAML2 shibboleth-sp.
-
-Distribuzione di riferimento: Debian GNU/Linux 9 (Stretch)
+Distribuzione di riferimento: Debian GNU/Linux 10 (buster)
 
 ## Creazione del metadato (nodo singolo)
 

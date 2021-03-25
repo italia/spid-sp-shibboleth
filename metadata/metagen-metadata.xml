@@ -1,4 +1,7 @@
-<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="https://spid.example.org/sp">
+<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
+                     xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+                     xmlns:spid="https://spid.gov.it/saml-extensions"
+                     entityID="https://spid.example.org/sp">
   <md:SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
     <md:KeyDescriptor>
       <ds:KeyInfo>
@@ -39,5 +42,19 @@ zua4lDCOzgFOBHiR+T5SpR3q6DMc4g8M
     <md:OrganizationDisplayName xml:lang="en">Ente di esempio</md:OrganizationDisplayName>
     <md:OrganizationURL xml:lang="en">http://www.example.org</md:OrganizationURL>
   </md:Organization>
+  <md:ContactPerson contactType="other">
+    <md:Extensions>
+      <spid:IPACode xmlns:spid="https://spid.gov.it/saml-extensions">
+        IPACode
+      </spid:IPACode>
+      <spid:FiscalCode xmlns:spid="https://spid.gov.it/saml-extensions">
+        0001010101
+      </spid:FiscalCode>
+      <spid:Public xmlns:spid="https://spid.gov.it/saml-extensions"/>
+    </md:Extensions>
+    <md:EmailAddress>
+      supporto.spid@example.org
+    </md:EmailAddress>
+  </md:ContactPerson>
 </md:EntityDescriptor>
 
