@@ -92,6 +92,9 @@ metadata_tmpl = """
 </md:EntityDescriptor>
 """
 
+# openssl x509 -outform der -in sp-cert.pem -out client.crt
+# cert_pem have the content of client.ctr ...
+
 cert_pem = """MIIEJzCCAo+gAwIBAgIUaoCRB+1HO/ohrrDKw++3orgFtEkwDQYJKoZIhvcNAQEL
 BQAwGzEZMBcGA1UEAxMQc3AudGVzdHVuaWNhbC5pdDAeFw0yMDEwMTQxNTA3NDBa
 Fw0zMDEwMTIxNTA3NDBaMBsxGTAXBgNVBAMTEHNwLnRlc3R1bmljYWwuaXQwggGi
@@ -129,15 +132,15 @@ data = {
 }
 
 md = metadata_tmpl.format(**data)
-print(md)
 metadata_file = open('pymetadata.xml', 'w')
 metadata_file.write(md)
 metadata_file.close()
 
 # sign it
 
-sign_cmd = "xmlsec1 --sign --privkey-pem sp-key.pem --id-attr:ID urn:oasis:names:tc:SAML:2.0:metadata:EntityDescriptor pymetadata.xml"
+sign_cmd = "xmlsec1 --sign --insecure --privkey-pem sp-key.pem --id-attr:ID urn:oasis:names:tc:SAML:2.0:metadata:EntityDescriptor pymetadata.xml"
 signed_metadata = subprocess.getoutput(sign_cmd)
+print(signed_metadata)
 metadata_file_sign = open('pymetadata_signed.xml', 'w')
 metadata_file_sign.write(signed_metadata)
 metadata_file_sign.close()
