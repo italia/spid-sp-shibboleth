@@ -16,4 +16,6 @@ I seguenti passaggi saranno descritti:
 2. scaricare i metadata di spid-saml-check nella directory `/etc/shibboleth/metadata/spid-saml-check.xml`, come definito in shibboleth2.xml
 3. creare i metadata e firmarli
 
+## Contribuire
 
+Aprire una issue per discutere degli scopi e delle modifiche, proporre una _Pull Request_ sul branch _dev_.
