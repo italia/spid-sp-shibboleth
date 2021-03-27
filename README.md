@@ -1,7 +1,7 @@
 # spid-sp-shibboleth
 Middleware SPID basato su Shibboleth
 
-[ Work in progress ]
+⚠️ Attenzione! Questo progetto si propone come un esempio di base che oggi richiede ulteriori integrazioni e adeguamenti. Apri nuove issue e raggiungici sul [canale Slack](https://developersitalia.slack.com/archives/C73R3UQE8) per contribuire.
 
 Questo progetto contiene un setup dimostrativo composto dai seguenti:
 
@@ -10,7 +10,6 @@ Questo progetto contiene un setup dimostrativo composto dai seguenti:
 - Script per la creazione guidata dei metadata firmati
 - Progetto PHP di esempio
 - Configurazione di Apache2 con mod_shib
-- Installazione di [spid-sp-test](https://github.com/italia/spid-sp-test)
 
 ![big picture](gallery/demo.gif)
 
