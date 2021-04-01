@@ -22,6 +22,8 @@ _Configure Shibboleth SP_:
 
 Per la configurazione di Shibboleth SP per SPID si dovranno invece compiere i seguenti passaggi:
 
+- creare dei [certificati conformi](https://github.com/italia/spid-compliant-certificates) all'avviso AgID SPID [29 v3](https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n29v3-specifiche_sp_pubblici_e_privati.pdf)
+
 - creare e firmare il metadata del servizio, in [shibboleth/metadata](shibboleth/metadata) sono
   presenti due script per la creazione del metadata, uno in ruby e un altro in python.
   Questi sono da intendersi solo come esempio, per la creazione e la firma dei metadata SPID esistono altre risorse
