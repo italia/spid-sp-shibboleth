@@ -6,7 +6,7 @@
     few exceptions for newer attributes where the name is the same for both versions. You will
     usually want to uncomment or map the names for both SAML versions as a unit.
     -->
-    
+
     <!-- First some useful eduPerson attributes that many sites might use. -->
 
     <Attribute name="urn:oid:1.3.6.1.4.1.5923.1.1.1.6" id="eppn">
@@ -34,20 +34,20 @@
     <Attribute name="urn:mace:dir:attribute-def:eduPersonEntitlement" id="entitlement"/>
 
     <!-- A persistent id attribute that supports personalized anonymous access. -->
-    
+
     <!-- First, the deprecated/incorrect version, decoded as a scoped string: -->
     <Attribute name="urn:mace:dir:attribute-def:eduPersonTargetedID" id="targeted-id">
         <AttributeDecoder xsi:type="ScopedAttributeDecoder"/>
         <!-- <AttributeDecoder xsi:type="NameIDFromScopedAttributeDecoder" formatter="$NameQualifier!$SPNameQualifier!$Name" defaultQualifiers="true"/> -->
     </Attribute>
-    
+
     <!-- Second, an alternate decoder that will decode the incorrect form into the newer form. -->
     <!--
     <Attribute name="urn:mace:dir:attribute-def:eduPersonTargetedID" id="persistent-id">
         <AttributeDecoder xsi:type="NameIDFromScopedAttributeDecoder" formatter="$NameQualifier!$SPNameQualifier!$Name" defaultQualifiers="true"/>
     </Attribute>
     -->
-    
+
     <!-- Third, the new version (note the OID-style name): -->
     <Attribute name="urn:oid:1.3.6.1.4.1.5923.1.1.1.10" id="persistent-id">
         <AttributeDecoder xsi:type="NameIDAttributeDecoder" formatter="$NameQualifier!$SPNameQualifier!$Name" defaultQualifiers="true"/>
@@ -57,13 +57,13 @@
     <Attribute name="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent" id="persistent-id">
         <AttributeDecoder xsi:type="NameIDAttributeDecoder" formatter="$NameQualifier!$SPNameQualifier!$Name" defaultQualifiers="true"/>
     </Attribute>
-    
+
     <!-- Some more eduPerson attributes, uncomment these to use them... -->
     <!--
     <Attribute name="urn:oid:1.3.6.1.4.1.5923.1.1.1.11" id="assurance"/>
-    
+
     <Attribute name="urn:oid:1.3.6.1.4.1.5923.1.5.1.1" id="member"/>
-    
+
     <Attribute name="urn:oid:1.3.6.1.4.1.5923.1.6.1.1" id="eduCourseOffering"/>
     <Attribute name="urn:oid:1.3.6.1.4.1.5923.1.6.1.2" id="eduCourseMember"/>
 
@@ -88,7 +88,7 @@
     <!--
     <Attribute name="urn:oid:1.3.6.1.4.1.25178.1.2.9" id="schacHomeOrganization"/>
     -->
-    
+
     <!-- Examples of LDAP-based attributes, uncomment to use these... -->
     <!--
     <Attribute name="urn:oid:2.5.4.3" id="cn"/>
@@ -149,22 +149,23 @@
     -->
 
     <!-- SPID Custom Attributes -->
-    <Attribute name="spidCode" id="SPIDCODE" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri" />
-    <Attribute name="name" id="NAME" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri" />
-    <Attribute name="familyName" id="FAMILYNAME" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri" />
-    <Attribute name="placeOfBirth" id="PLACEOFBIRTH" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"/>
-    <Attribute name="countyOfBirth" id="COUNTYOFBIRTH" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"/>
-    <Attribute name="dateOfBirth" id="DATEOFBIRTH" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"/>
-    <Attribute name="gender" id="GENDER" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"/>
-    <Attribute name="companyName" id="COMPANYNAME" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"/>
-    <Attribute name="registeredOffice" id="REGISTEREDOFFICE" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"/>
-    <Attribute name="fiscalNumber" id="FISCALNUMBER" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"/>
-    <Attribute name="ivaCode" id="IVACODE" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"/>
-    <Attribute name="idCard" id="IDCARD" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"/>
-    <Attribute name="mobilePhone" id="MOBILEPHONE" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"/>
-    <Attribute name="email" id="EMAIL" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"/>
-    <Attribute name="address" id="ADDRESS" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"/>
-    <Attribute name="expirationDate" id="EXPIRATIONDATE" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"/>
-    <Attribute name="digitalAddress" id="DIGITALADDRESS" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"/>
+    <Attribute name="spidCode" id="SPIDCODE" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" />
+    <Attribute name="name" id="NAME" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" />
+    <Attribute name="familyName" id="FAMILYNAME" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" />
+    <Attribute name="placeOfBirth" id="PLACEOFBIRTH" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"/>
+    <Attribute name="countyOfBirth" id="COUNTYOFBIRTH" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"/>
+    <Attribute name="dateOfBirth" id="DATEOFBIRTH" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"/>
+    <Attribute name="gender" id="GENDER" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"/>
+    <Attribute name="companyName" id="COMPANYNAME" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"/>
+    <Attribute name="registeredOffice" id="REGISTEREDOFFICE" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"/>
+    <Attribute name="fiscalNumber" id="FISCALNUMBER" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"/>
+    <Attribute name="ivaCode" id="IVACODE" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"/>
+    <Attribute name="idCard" id="IDCARD" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"/>
+    <Attribute name="mobilePhone" id="MOBILEPHONE" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"/>
+    <Attribute name="email" id="EMAIL" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"/>
+    <Attribute name="address" id="ADDRESS" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"/>
+    <Attribute name="expirationDate" id="EXPIRATIONDATE" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"/>
+    <Attribute name="digitalAddress" id="DIGITALADDRESS" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"/>
+
 
 </Attributes>
