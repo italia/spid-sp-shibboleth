@@ -42,31 +42,29 @@
             for the same reason acsIndex is needed also if it is 0
             -->
 
-            <SessionInitiator type="Chaining"  id="Login" Location="/Login" isDefault="true">
-
-				<SessionInitiator type="SAMLDS" URL="https://{sp_fqdn}/disco.html"/>
-
-	            <SessionInitiator type="SAML2"
-	                              outgoingBinding="urn:oasis:names:tc:SAML:profiles:SSO:request-init"
-	                              isPassive="false"
-	                              acsIndex="0"
-	                              acsByIndex="true"
-	                              signing="true">
-	                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
-	                                    xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
-	                                    ID="id..."
-	                                    Version="2.0"
-	                                    IssueInstant="2017-01-01T00:00:00Z"
-	                                    AttributeConsumingServiceIndex="0"
-	                                    ForceAuthn="true">
-	                    <!-- if NameQualifier is different from entityID, you need to update security-policy.xml -->
-						<saml:Issuer NameQualifier="https://{sp_fqdn}/shibboleth"
-	                                 Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
-	                    >https://{sp_fqdn}/shibboleth</saml:Issuer>
-	                    <samlp:NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient"/>
-	                </samlp:AuthnRequest>
-	            </SessionInitiator>
-
+            <SessionInitiator type="SAML2"
+                              id="Login"
+                              Location="/Login"
+                              isDefault="true"
+                              outgoingBinding="urn:oasis:names:tc:SAML:profiles:SSO:request-init"
+                              isPassive="false"
+                              acsIndex="0"
+                              acsByIndex="true"
+                              signing="true">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+                                    xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
+                                    ID="id..."
+                                    Version="2.0"
+                                    IssueInstant="2017-01-01T00:00:00Z"
+                                    AttributeConsumingServiceIndex="0"
+                                    ForceAuthn="true">
+                    <!-- if NameQualifier is different from entityID, you need to update security-policy.xml -->
+                    <saml:Issuer NameQualifier="https://{sp_fqdn}/shibboleth"
+                                 Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+                    >https://{sp_fqdn}/shibboleth
+                    </saml:Issuer>
+                    <samlp:NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient"/>
+                </samlp:AuthnRequest>
             </SessionInitiator>
 
             <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
@@ -85,7 +83,7 @@
             <md:SingleLogoutService Location="/SLO/Redirect"
                                     Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"/>
             <!-- Administrative logout. -->
-            <LogoutInitiator type="Admin" Location="/Logout/Admin" acl="127.0.0.1 ::1" />
+            <LogoutInitiator type="Admin" Location="/Logout/Admin" acl="127.0.0.1 ::1"/>
 
             <!-- Extension service that generates "approximate" metadata based on SP configuration. -->
             <Handler type="MetadataGenerator" Location="/Metadata" signing="true"/>

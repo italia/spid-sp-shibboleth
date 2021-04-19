@@ -35,7 +35,8 @@ Per la configurazione di Shibboleth SP per SPID si dovranno invece compiere i se
   del SP ({sp_fqdn} diventerà ad esempio sp.example.org)
 
 - E' necessario infine, ai fini della demo, abilitare PHP all'interno di Apache2 il virtualhost
-  relativo a {sp_fqdn}, vedi il contenuto di [Apache2](Apache2/) e di [php-example-project](php-example-project/)
+  relativo a {sp_fqdn}, vedi il contenuto di [Apache2](Apache2/) e di [php-example-project](php-example-project/). 
+  Visitare col browser l'url https://{sp_fqdn}/disco/ per visualizzare il bottone 'login con SPID'.
 
 - copiare il metadata all'interno di un path pubblico della risorsa www del tuo {sp_fqdn}
 
