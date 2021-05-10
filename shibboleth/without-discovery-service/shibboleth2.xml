@@ -51,7 +51,13 @@
                                  acsIndex="0" 
                                  acsByIndex="true" 
                                  signing="true">
-                  <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" ID="id..." Version="2.0" IssueInstant="2017-01-01T00:00:00Z" AttributeConsumingServiceIndex="0" ForceAuthn="true">
+                  <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+                                    xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
+                                    ID="id..."
+                                    Version="2.0"
+                                    IssueInstant="2017-01-01T00:00:00Z"
+                                    AttributeConsumingServiceIndex="0"
+                                    ForceAuthn="true">
                      <!-- if NameQualifier is different from entityID, you need to update security-policy.xml -->
                      <saml:Issuer NameQualifier="https://{sp_fqdn}/shibboleth"
                                  Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
