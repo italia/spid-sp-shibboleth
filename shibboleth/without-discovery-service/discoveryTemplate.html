@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <title>Request for Authentication</title>
+    <link type="text/css" rel="stylesheet" href="/css/spid-sp-access-button.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <h1>Request for Authentication</h1>
+    <p>This web site requires you to login before proceeding. Please identify
+      the domain name of your organization:
+    </p>
+    <form method="GET" action="<shibmlp action/>" id="fm1">
+      <shibmlpif target>
+        <input type="hidden" name="target" value="<shibmlp target/>"/>
+      </shibmlpif>
+      <shibmlpif acsIndex>
+        <input type="hidden" name="acsIndex" value="<shibmlp acsIndex/>"/>
+      </shibmlpif>
+      <shibmlpif isPassive>
+        <input type="hidden" name="isPassive" value="<shibmlp isPassive/>"/>
+      </shibmlpif>
+      <shibmlpif forceAuthn>
+        <input type="hidden" name="forceAuthn" value="<shibmlp forceAuthn/>"/>
+      </shibmlpif>
+      <shibmlpif authnContextClassRef>
+        <input type="hidden" name="authnContextClassRef" value="<shibmlp authnContextClassRef/>"/>
+      </shibmlpif>
+      <shibmlpif authnContextDeclRef>
+        <input type="hidden" name="authnContextDeclRef" value="<shibmlp authnContextDeclRef/>"/>
+      </shibmlpif>
+      <shibmlpif authnContextComparison>
+        <input type="hidden" name="authnContextComparison" value="<shibmlp authnContextComparison/>"/>
+      </shibmlpif>
+      <input type="hidden" name="entityID" value="<shibmlp entityID/>" id="entityID">
+      <!--		    <input type="submit" value="Submit"/> -->
+      <!-- AGID - SPID IDP BUTTON LARGE "ENTRA CON SPID" * begin * -->
+      <a href="#" class="italia-it-button italia-it-button-size-m button-spid" spid-idp-button="#spid-idp-button-large-post" aria-haspopup="true" aria-expanded="false">
+      <span class="italia-it-button-icon"><img src="/img/spid-ico-circle-bb.svg" onerror="this.src='/img/spid-ico-circle-bb.png'; this.onerror=null;" alt="" /></span>
+      <span class="italia-it-button-text">Entra con SPID</span>
+      </a>
+      <div id="spid-idp-button-large-post" class="spid-idp-button spid-idp-button-tip spid-idp-button-relative">
+        <ul id="spid-idp-list-large-root-post" class="spid-idp-button-menu" aria-labelledby="spid-idp">
+          <li class="spid-idp-button-link" data-idp="arubaid">
+            <button entityID="https://loginspid.aruba.it" class="idp-button-idp-logo" name="_eventId_ChooseMethodB" type="submit"><span class="spid-sr-only">Aruba ID</span><img class="spid-idp-button-logo" src="/img/spid-idp-arubaid.svg" onerror="this.src='/img/spid-idp-arubaid.png'; this.onerror=null;" alt="Aruba ID" /></button>
+          </li>
+          <li class="spid-idp-button-link" data-idp="infocertid">
+            <button entityID="https://identity.infocert.it" class="idp-button-idp-logo" name="_eventId_ChooseMethodB" type="submit"><span class="spid-sr-only">Infocert ID</span><img class="spid-idp-button-logo" src="/img/spid-idp-infocertid.svg" onerror="this.src='/img/spid-idp-infocertid.png'; this.onerror=null;" alt="Infocert ID" /></button>
+          </li>
+          <li class="spid-idp-button-link" data-idp="posteid">
+            <button entityID="https://posteid.poste.it" class="idp-button-idp-logo" name="_eventId_ChooseMethodB" type="submit"><span class="spid-sr-only">Poste ID</span><img class="spid-idp-button-logo" src="/img/spid-idp-posteid.svg" onerror="this.src='/img/spid-idp-posteid.png'; this.onerror=null;" alt="Poste ID" /></button>
+          </li>
+          <li class="spid-idp-button-link" data-idp="sielteid">
+            <button entityID="https://identity.sieltecloud.it" class="idp-button-idp-logo" name="_eventId_ChooseMethodB" type="submit"><span class="spid-sr-only">Sielte ID</span><img class="spid-idp-button-logo" src="/img/spid-idp-sielteid.svg" onerror="this.src='/img/spid-idp-sielteid.png'; this.onerror=null;" alt="Sielte ID" /></button>
+          </li>
+          <li class="spid-idp-button-link" data-idp="timid">
+            <button entityID="https://login.id.tim.it/affwebservices/public/saml2sso" class="idp-button-idp-logo" name="_eventId_ChooseMethodB" type="submit"><span class="spid-sr-only">Tim ID</span><img class="spid-idp-button-logo" src="/img/spid-idp-timid.svg" onerror="this.src='/img/spid-idp-timid.png'; this.onerror=null;" alt="Tim ID" /></button>
+          </li>
+          <li class="spid-idp-button-link" data-idp="intesaid">
+            <button entityID="https://spid.intesa.it" class="idp-button-idp-logo" name="_eventId_ChooseMethodB" type="submit"><span class="spid-sr-only">Tim ID</span><img class="spid-idp-button-logo" src="/img/spid-idp-intesaid.svg" onerror="this.src='/img/spid-idp-intesaid.png'; this.onerror=null;" alt="Intesa ID" /></button>
+          </li>
+          <li class="spid-idp-button-link" data-idp="lepidaid">
+            <button entityID="https://id.lepida.it/idp/shibboleth" class="idp-button-idp-logo" name="_eventId_ChooseMethodB" type="submit"><span class="spid-sr-only">Tim ID</span><img class="spid-idp-button-logo" src="/img/spid-idp-lepidaid.svg" onerror="this.src='/img/spid-idp-lepidaid.png'; this.onerror=null;" alt="Lepida ID" /></button>
+          </li>
+          <li class="spid-idp-button-link" data-idp="namirialid">
+            <button entityID="https://idp.namirialtsp.com/idp" class="idp-button-idp-logo" name="_eventId_ChooseMethodB" type="submit"><span class="spid-sr-only">Tim ID</span><img class="spid-idp-button-logo" src="/img/spid-idp-namirialid.svg" onerror="this.src='/img/spid-idp-namirialid.png'; this.onerror=null;" alt="Namirial ID" /></button>
+          </li>
+          <li class="spid-idp-button-link" data-idp="registerid">
+            <button entityID="https://spid.register.it" class="idp-button-idp-logo" name="_eventId_ChooseMethodB" type="submit"><span class="spid-sr-only">Tim ID</span><img class="spid-idp-button-logo" src="/img/spid-idp-spiditalia.svg" onerror="this.src='/img/spid-idp-spiditalia.png'; this.onerror=null;" alt="Register ID" /></button>
+          </li>
+          <li class="spid-idp-button-link" data-idp="validatorid">
+            <button entityID="https://validator.spid.gov.it" class="idp-button-idp-logo" name="_eventId_ChooseMethodB" type="submit"><span class="spid-sr-only">Tim ID</span><img class="spid-idp-button-logo" src="/img/spid-idp-spidvalidator.svg" onerror="this.src='/img/spid-idp-spidvalidator.png'; this.onerror=null;" alt="ValidatorIDP" /></button>
+          </li>
+          <li class="spid-idp-button-link" data-idp="validatorid">
+            <button entityID="http://localhost:8080" class="idp-button-idp-logo" name="_eventId_ChooseMethodB" type="submit"><span class="spid-sr-only">Tim ID</span><img class="spid-idp-button-logo" src="/img/spid-idp-spidvalidator.svg" onerror="this.src='/img/spid-idp-spidvalidator.png'; this.onerror=null;" alt="ValidatorIDPLocal" /></button>
+          </li>
+        </ul>
+      </div>
+    </form>
+    <shibmlpif entityID>
+      <p>The system was unable to determine how to proceed using the value you supplied.</p>
+    </shibmlpif>
+    <script type="text/javascript" src="/js/spid-sp-access-button.min.js"></script>
+    <script>
+      $(document).ready(function(){
+         var rootList = $("#spid-idp-list-large-root-post");
+         var idpList = rootList.children(".spid-idp-button-link");
+         var lnkList = rootList.children(".spid-idp-support-link");
+         while (idpList.length) {
+             rootList.append(idpList.splice(Math.floor(Math.random() * idpList.length), 1)[0]);
+         }
+         rootList.append(lnkList);
+         $("#fm1").submit(function( event ) {
+           var entityID = $("button[type=submit][clicked=true]").attr('entityID');
+           $("#entityID").val(entityID);
+         });
+      
+         $("form button[type=submit]").click(function() {
+          $("button[type=submit]", $(this).parents("form")).removeAttr("clicked");
+          $(this).attr("clicked", "true");
+         });
+      
+      });
+      
+    </script>
+  </body>
+</html>
