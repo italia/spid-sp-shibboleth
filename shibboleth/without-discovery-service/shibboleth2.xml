@@ -43,31 +43,6 @@
             for the same reason acsIndex is needed also if it is 0
             -->
 
-            <SessionInitiator type="SAML2"
-                              id="Login"
-                              Location="/Login"
-                              isDefault="true"
-                              outgoingBinding="urn:oasis:names:tc:SAML:profiles:SSO:request-init"
-                              isPassive="false"
-                              acsIndex="0"
-                              acsByIndex="true"
-                              signing="true">
-                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
-                                    xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
-                                    ID="id..."
-                                    Version="2.0"
-                                    IssueInstant="2017-01-01T00:00:00Z"
-                                    AttributeConsumingServiceIndex="0"
-                                    ForceAuthn="true">
-                    <!-- if NameQualifier is different from entityID, you need to update security-policy.xml -->
-                    <saml:Issuer NameQualifier="https://{sp_fqdn}/shibboleth"
-                                 Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
-                    >https://{sp_fqdn}/shibboleth
-                    </saml:Issuer>
-                    <samlp:NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient"/>
-                </samlp:AuthnRequest>
-            </SessionInitiator>
-
             <SessionInitiator type="Chaining" id="idpchooser" Location="/Login">
                <SessionInitiator type="SAML2" 
                                  id="Login" 
@@ -86,7 +61,7 @@
                   </samlp:AuthnRequest>
                </SessionInitiator>
               
-               <SessionInitiator type="Form" template="/etc/shibboleth/discoveryTemplate.html" acsIndex="0" />
+               <SessionInitiator type="Form" template="discoveryTemplate.html" />
             </SessionInitiator>          
 
             <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
