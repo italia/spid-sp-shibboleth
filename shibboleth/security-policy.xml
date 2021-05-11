@@ -20,6 +20,22 @@
         <PolicyRule type="XMLSigning" errorFatal="true"/>
         <PolicyRule type="SimpleSigning" errorFatal="true"/>
     </Policy>
+	
+    <!-- 
+    Required for passing SPID compliance tests 16, 17 and 18.
+    This blocks uncorrelated responses with unspecified, 
+    missing or wrong inResponseTo response attribute
+    -->
+    <Policy id="blockUnsolicited" validate="false">
+        <PolicyRule type="MessageFlow" blockUnsolicited="true" checkReplay="true" expires="60" checkCorrelation="true"/>
+        <PolicyRule type="Conditions">
+            <PolicyRule type="Audience"/>
+        </PolicyRule>
+        <PolicyRule type="ClientCertAuth" errorFatal="true"/>
+        <PolicyRule type="XMLSigning" errorFatal="true"/>
+        <PolicyRule type="SimpleSigning" errorFatal="true"/>
+        <PolicyRule type="Bearer" blockUnsolicited="true"/>
+    </Policy>	
 
     <!--
     This policy is a place-holder for use of assertions in metadata
