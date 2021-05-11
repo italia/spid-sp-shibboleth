@@ -18,6 +18,7 @@
         authnContextClassRef="https://www.spid.gov.it/SpidL2" authnContextComparison="exact"
         NameIDFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
         policyId="blockUnsolicited"
+        requireSignedAssertions="true"
         cipherSuites="DEFAULT:!EXP:!LOW:!aNULL:!eNULL:!DES:!IDEA:!SEED:!RC4:!3DES:!kRSA:!SSLv2:!SSLv3:!TLSv1:!TLSv1.1">
 
         <!--
