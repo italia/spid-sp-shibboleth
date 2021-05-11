@@ -1,7 +1,7 @@
 # spid-sp-shibboleth
 Middleware SPID basato su Shibboleth
 
-⚠️ Attenzione! Questo progetto si propone come un esempio di base che oggi richiede ulteriori integrazioni e adeguamenti. Apri nuove issue e raggiungici sul [canale Slack](https://developersitalia.slack.com/archives/C73R3UQE8) per contribuire.
+Apri nuove issue e raggiungici sul [canale Slack](https://developersitalia.slack.com/archives/C73R3UQE8) per contribuire.
 
 Questo progetto contiene un setup dimostrativo composto dai seguenti:
 
