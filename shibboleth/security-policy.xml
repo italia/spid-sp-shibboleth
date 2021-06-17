@@ -9,7 +9,6 @@
     <Policy id="default" validate="false">
         <PolicyRule type="MessageFlow" checkReplay="true" expires="60"/>
         <PolicyRule type="Conditions">
-            <PolicyRule type="Audience"/>
             <!-- Enable Delegation rule to permit delegated access. -->
             <!-- <PolicyRule type="Delegation"/> -->
         </PolicyRule>
@@ -44,6 +43,6 @@
     </Policy>
 
     <!-- Disables known weak algorithms. -->
-    <ExcludedAlgorithms excludeDefaults="true"/>
+    <AlgorithmBlacklist includeDefaultBlacklist="true"/>
 
 </SecurityPolicies>
