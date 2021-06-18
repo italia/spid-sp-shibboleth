@@ -33,6 +33,7 @@
     <Policy id="blockUnsolicited" validate="false">
         <PolicyRule type="MessageFlow" blockUnsolicited="true" checkReplay="true" expires="60" checkCorrelation="true"/>
         <PolicyRule type="Conditions">
+            <!-- NameQualifier != entityID? see above -->
             <PolicyRule type="Audience"/>
         </PolicyRule>
         <PolicyRule type="ClientCertAuth" errorFatal="true"/>
@@ -51,6 +52,6 @@
     </Policy>
 
     <!-- Disables known weak algorithms. -->
-    <AlgorithmBlacklist includeDefaultBlacklist="true"/>
+    <ExcludedAlgorithms excludeDefaults="true"/>
 
 </SecurityPolicies>
