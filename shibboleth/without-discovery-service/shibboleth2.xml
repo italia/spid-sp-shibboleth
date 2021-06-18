@@ -15,7 +15,7 @@
         REMOTE_USER="eppn subject-id pairwise-id persistent-id"
         signing="true"
         signingAlg="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" encryption="false"
-        authnContextClassRef="https://www.spid.gov.it/SpidL2" authnContextComparison="exact"
+        authnContextClassRef="https://www.spid.gov.it/SpidL2" authnContextComparison="minimum"
         NameIDFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
         policyId="blockUnsolicited"
         cipherSuites="DEFAULT:!EXP:!LOW:!aNULL:!eNULL:!DES:!IDEA:!SEED:!RC4:!3DES:!kRSA:!SSLv2:!SSLv3:!TLSv1:!TLSv1.1">
