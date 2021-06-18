@@ -9,6 +9,10 @@
     <Policy id="default" validate="false">
         <PolicyRule type="MessageFlow" checkReplay="true" expires="60"/>
         <PolicyRule type="Conditions">
+	    
+            <PolicyRule type="Audience">
+		        <Audience>https://spid.sp.example.it/shibboleth</Audience>
+            </PolicyRule>
             <!-- Enable Delegation rule to permit delegated access. -->
             <!-- <PolicyRule type="Delegation"/> -->
         </PolicyRule>

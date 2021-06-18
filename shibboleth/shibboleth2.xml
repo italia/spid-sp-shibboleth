@@ -60,7 +60,7 @@
                                     IssueInstant="2017-01-01T00:00:00Z"
                                     AttributeConsumingServiceIndex="0"
                                     ForceAuthn="true">
-                    <!-- NameQualifier has to match with entityID -->
+                    <!-- if NameQualifier is different from entityID, you need to update security-policy.xml -->
                     <saml:Issuer NameQualifier="https://{sp_fqdn}/shibboleth"
                                  Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
                     >https://{sp_fqdn}/shibboleth
