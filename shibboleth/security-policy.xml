@@ -9,10 +9,14 @@
     <Policy id="default" validate="false">
         <PolicyRule type="MessageFlow" checkReplay="true" expires="60"/>
         <PolicyRule type="Conditions">
-	    
+            <PolicyRule type="Audience"/>
+            <!--
+            If if NameQualifier is different from entityID, say mydomain.edu,
+            you would need the following:
             <PolicyRule type="Audience">
-		        <Audience>https://spid.sp.example.it/shibboleth</Audience>
+		        <Audience>mydomain.edu</Audience>
             </PolicyRule>
+            -->
             <!-- Enable Delegation rule to permit delegated access. -->
             <!-- <PolicyRule type="Delegation"/> -->
         </PolicyRule>
