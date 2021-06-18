@@ -63,8 +63,7 @@
                     <!-- if NameQualifier is different from entityID, you need to update security-policy.xml -->
                     <saml:Issuer NameQualifier="https://{sp_fqdn}/shibboleth"
                                  Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
-                    >https://{sp_fqdn}/shibboleth
-                    </saml:Issuer>
+                    >https://{sp_fqdn}/shibboleth</saml:Issuer>
                     <samlp:NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient"/>
                 </samlp:AuthnRequest>
             </SessionInitiator>
