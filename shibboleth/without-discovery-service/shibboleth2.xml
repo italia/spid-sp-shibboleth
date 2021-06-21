@@ -11,9 +11,12 @@
     -->
 
     <!-- The ApplicationDefaults element is where most of Shibboleth's SAML bits are defined. -->
-	<!-- authContextClassRef >= "https://www.spid.gov.it/SpidL2" just requests IdP to fulfill required
-              security class. In order to make sure nobody tampers with response and actually provides 
-              a lower secutiry class, enforce it in the apache2 virtaul host 
+	<!-- authContextClassRef >= "https://www.spid.gov.it/SpidL2" just requests IdP to provide a certain
+              security class.
+              "The SAML protocol includes capabilities that easily allow a smart attacker to circumvent 
+              your request process and the enforcement step is essential if you actually want to require 
+              the use of any particular authentication method" (Scott Cantor).
+              The enforcements step can be done it in the apache2 virtual host 
               (look for hints in spid-sp-shibboleth.conf) --> 
     <ApplicationDefaults entityID="https://{sp_fqdn}/shibboleth"
         REMOTE_USER="eppn subject-id pairwise-id persistent-id"
