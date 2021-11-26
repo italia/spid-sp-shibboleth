@@ -118,17 +118,19 @@
 
         <!-- SPID Test Environment IdentityServer Metadata -->
         <MetadataProvider type="XML" validate="true" path="metadata/spid-saml-check.xml" id="http://localhost:8080"/>
-	<!--
-        <MetadataProvider type="XML" validate="true" path="metadata/arubaid.xml" id="https://loginspid.aruba.it"/>
-        <MetadataProvider type="XML" validate="true" path="metadata/infocertid.xml" id="https://identity.infocert.it"/>
-        <MetadataProvider type="XML" validate="true" path="metadata/intesaid.xml" id="https://spid.intesa.it"/>
-        <MetadataProvider type="XML" validate="true" path="metadata/namirialid.xml" id="https://idp.namirialtsp.com/idp"/>
-        <MetadataProvider type="XML" validate="true" path="metadata/posteid.xml" id="https://posteid.poste.it"/>
-        <MetadataProvider type="XML" validate="true" path="metadata/sielteid.xml" id="https://identity.sieltecloud.it"/>
-        <MetadataProvider type="XML" validate="true" path="metadata/spiditalia.xml" id="https://spid.register.it"/>
-        <MetadataProvider type="XML" validate="true" path="metadata/timid.xml" id="https://login.id.tim.it/affwebservices/public/saml2sso"/>
-        <MetadataProvider type="XML" validate="true" path="metadata/lepidaid.xml" id="https://id.lepida.it/idp/shibboleth"/>
-	-->
+
+        <!--
+            either download each IdP's metadata from:
+            https://www.agid.gov.it/it/piattaforme/spid/identity-provider-accreditati
+            or uncomment next MetadataProvider to use the registry.
+            CIE metadata from ipzs.it are not included.
+        -->
+        <!--
+	    <MetadataProvider type="XML" url="https://registry.spid.gov.it/metadata/idp/spid-entities-idps.xml"
+                          backingFilePath="spid-entities-idps.xml"
+                          reloadInterval="7200">
+        </MetadataProvider>
+	    -->
 
         <!-- Map to extract attributes from SAML assertions. -->
         <AttributeExtractor type="XML" validate="true" reloadChanges="false" path="attribute-map.xml"/>
