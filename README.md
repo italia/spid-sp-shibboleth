@@ -20,6 +20,8 @@ _Configure Shibboleth SP_:
 
  - [HOWTO Install and Configure a Service Provider](https://github.com/ConsortiumGARR/idem-tutorials#howto-install-and-configure-a-service-provider)
 
+Per rispondere ai test di conformità 16, 17 and 18 è necessaria la versione di Shibboleth 3.1 o superiore.
+
 Per la configurazione di Shibboleth SP per SPID si dovranno invece compiere i seguenti passaggi:
 
 - creare dei [certificati conformi](https://github.com/italia/spid-compliant-certificates) all'avviso AgID SPID [29 v3](https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n29v3-specifiche_sp_pubblici_e_privati.pdf)
